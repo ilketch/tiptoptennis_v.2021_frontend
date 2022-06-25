@@ -1,0 +1,26 @@
+<div class="login-container">
+    <div class="card text-center card-login">
+        <div class="title-container">
+            <h2>Accedi</h2>
+        </div>
+        <form #loginForm="ngForm" name="loginForm" class="needs-validation" (ngSubmit)="SignIn(loginForm)">
+            <div class="card-body">
+                <div class="form-floating form-group mb-3">
+                    <input type="username" required minlength="3" class="form-control" [(ngModel)]="username" id="username" name="Username" #usernametemp="ngModel" placeholder="Username">
+                    <label for="username" class="form-label">Username</label>
+                    <div *ngIf="usernametemp.invalid && usernametemp.dirty" class="form-control-error-container">
+                        <div *ngIf="usernametemp.errors.required" class="alert alert-danger">Lo username è obbligatorio</div>
+                    </div>
+                </div>
+                <div class="form-floating">
+                    <input required type="password" class="form-control has-validation" required id="floatingPassword" placeholder="Password" name="password" [(ngModel)]="password" #passwordtemp="ngModel">
+                    <label for="floatingPassword">Password</label>
+                    <div *ngIf="passwordtemp.invalid && passwordtemp.dirty" class="alert alert-danger"></div>
+                </div>
+                <div>
+                    <button class="btn btn-primary login-button" type="submit" [disabled]="loginForm.form.invalid">Login</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

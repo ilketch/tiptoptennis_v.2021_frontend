@@ -1,0 +1,30 @@
+<div class="footer-container">
+    <div class="col-6 col-s-6 footer-container-info">
+        <h3>Tip Top Tennis ASD</h3>
+        <p><a href="https://g.page/tip-top-tennis?share" target="_blank">via San Carlo 115, Marnate (VA)</a></p>
+        <p><a href="tel:+393493055428">tel. 349 3055428</a></p>
+        <p><a href="mailto:scuola@tiptoptennis.it">scuola@tiptoptennis.it</a></p>
+        <div class="footer-container-info-social">
+            <span>Seguici su</span>
+            <span><a href="https://www.facebook.com/tiptoptennis2017" target="_blank"><img src="https://img.icons8.com/material-rounded/48/4a90e2/facebook-circled--v1.png"/></a></span>
+            <span><a href="https://www.instagram.com/tiptoptennis17/" target="_blank"><img src="https://img.icons8.com/fluency/48/4a90e2/instagram-new.png"/></a></span>
+            <span><a href="https://wa.me/+393493055428?text=Ciao!%20Mi%20piacerebbe%20avere%20informazioni%20sui%20corsi" target="_blank"><img src="https://img.icons8.com/material-rounded/48/26e07f/whatsapp--v1.png"/></a></span>
+            <span><a href="https://www.youtube.com/channel/UCQsTWxs5dYaTufPSzmr713w/featured" target="_blank"><img src="https://img.icons8.com/color/48/fa314a/youtube-play.png"/></a></span>
+        </div>
+    </div>
+    <div class="col-6 col-s-6 footer-container-news">
+        <div class="row ultime-notizie">ULTIME NOTIZIE</div>
+        <div class="col-6 col-s-6 col-m-6 ultima-notizia" (click)="goToNews()">
+            <h6 class="titoloNotizia">{{ ultimaNotizia.titolo }}</h6>
+            <p class="dataNotizia">{{ ultimaNotizia.data | date:'dd-MM-yyyy' }}</p>
+            <div class="contenutoNotizia" id="ultimaNotizia"></div>
+        </div>
+        <div class="col-6 col-s-6 col-m-6 ultima-notizia" (click)="goToNews()">
+            <h6 class="titoloNotizia">{{ penultimaNotizia.titolo }}</h6>
+            <p class="dataNotizia">{{ penultimaNotizia.data | date:'dd-MM-yyyy' }}</p>
+            <div class="contenutoNotizia" id="penultimaNotizia"></div>
+        </div>
+    </div>
+
+    <p class="copyright">© 2021 TipTopTennis ASD. All rights reserved</p>
+</div>

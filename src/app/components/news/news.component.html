@@ -1,0 +1,17 @@
+
+
+<div class="news-container">
+    <h4>Notizie</h4>
+    <div *ngFor="let n of visibleNews" class="notizia">
+        <div class="card-data">
+            {{ n.data | date:'dd-MM-yyyy' }}
+        </div>
+        <div class="card-body">
+            <h5>{{ n.titolo }}</h5>
+            <div [innerHtml]="n.contenuto" ></div>
+        </div>
+    </div>
+</div>
+
+
+<app-footer></app-footer>

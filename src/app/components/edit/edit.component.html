@@ -1,0 +1,230 @@
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        
+<section name="text-editor" class="text-editor">
+  <div class="sample-toolbar">
+      <a href="javascript:void(0)" (click)="format('bold')"><span class="fa fa-bold fa-fw"></span></a>
+      <a href="javascript:void(0)" (click)="format('italic')"><span class="fa fa-italic fa-fw"></span></a>
+      <a href="javascript:void(0)" (click)="setUrl()"><span class="fa fa-link fa-fw"></span></a>
+      <span><input id="txtFormatUrl" placeholder="url" class="form-control" [(ngModel)]='url'></span>
+      <button class="salva" (click)="save()">Salva</button>
+  </div>
+
+  <div class="editor" id="sampleeditor"></div>
+
+  <div class="mioDiv">
+      codice html salvato<div id="html" class="form-control lungo">{{ this.testo }}</div>
+      <br>
+      codice html ricevuto e convertito<div id="ui" class="form-control lungo"></div>
+  </div>
+</section>
+
+
+<section name="file upload">
+  <form>
+    <input type="file" name="inputFile">
+    <button type="submit" (click)="uploadFile()">carica</button>
+  </form>
+</section> -->
+
+<!-- 
+<script>
+  const myForm = document.getElementById('myForm');
+  const inpFile = document.getElementById('inpFile');
+
+  myForm.addEventListener('submit', e => {
+      e.preventDefault();
+
+      const endpoint = "upload.php";
+      
+      const formData = new FormData();
+
+      formData.append('inpFile', inpFile.files[0]);
+      
+      console.log('inpFile: ' + inpFile.files[0])
+
+      console.log('formData: ' + formData)
+
+      debugger
+      fetch(endpoint, {
+          method: 'POST',
+          body: formData
+      }).catch(console.error);
+  });
+</script> -->
+
+<div class="edit-container">
+
+  <div class="edit-container-view">
+
+    <div class="barra-filtri">
+      <div class="filtro-scelta col-3">
+        <select [(ngModel)]="filterScelta" name="filterScelta" [ngModelOptions]="{standalone: true}" (click)="filter()">
+          <option name="tutti" value="tutti" >Tutti</option>
+          <option name="visibili" value="visibili">Solo quelli visibili</option>
+          <option name="nonvisibili" value="nonvisibili">Solo quelli non visibili</option>
+          <option name="eliminati" value="eliminati">Cestino</option>
+        </select>
+      </div>
+      <div class="filtro-ricerca col-8">
+        <img src="https://img.icons8.com/ios-glyphs/18/000000/search.png"/>        
+        <input type="text" class="titolo-filtro" placeholder="Cerca per titolo..." (keyup)="aggiorna()" [(ngModel)]="filterTitolo">
+      </div>
+      <div class="aggiungi col-1">
+        <button class="aggiungibtn" title="Aggiungi Notizia" data-bs-toggle="modal" data-bs-target="#add-news" (click)="SvuotaForm(addNewsForm)"><img src="https://img.icons8.com/android/24/000000/plus.png"/></button>
+      </div>
+    </div>
+
+    <div *ngFor="let n of filteredNews" class="notizia">
+      <div class="barra-funzioni">
+        <button *ngIf="n.espandi === false" class="espandi-riduci-btn" (click)="n.espandi=true"><img src="https://img.icons8.com/ios/25/000000/forward--v1.png" title="Espandi"/></button>
+        <button *ngIf="n.espandi === true" class="espandi-riduci-btn" (click)="n.espandi=false"><img src="https://img.icons8.com/ios/25/000000/expand-arrow--v2.png"  title="Riduci"/></button>
+        <div *ngIf="n.espandi === false" class="data">{{ n.data | date:'dd-MM-yyyy' }}</div>
+        <div *ngIf="n.espandi === false" class="titolo">{{ n.titolo }}</div>
+        <button *ngIf="n.isDeleted === true" (click)="Delete(n.id)" class="eliminabtn"><img src="https://img.icons8.com/ios/25/000000/delete--v1.png" title="Elimina"/></button>
+        <button *ngIf="n.isDeleted === false" (click)="PutIntoRecycleBin(n.id)" class="eliminabtn"><img src="https://img.icons8.com/ios/25/000000/delete--v1.png" title="Sposta nel cestino"/></button>
+        <button *ngIf="n.isDeleted === true" (click)="RemoveFromRecycleBin(n.id)" class="ripristinabtn"><img src="https://img.icons8.com/fluency-systems-regular/25/000000/undo--v1.png" title="Ripristina"/></button>
+        <button *ngIf="n.isDeleted === false" (click)="GetNews(n.id)" class="modificabtn" data-bs-toggle="modal" data-bs-target="#edit-news" ><img src="https://img.icons8.com/ios/25/000000/edit--v1.png" title="Modifica"/></button>
+        <button *ngIf="n.isVisible === true && n.isDeleted === false" (click)="SetInvisible(n.id)" class="visibilebtn" title="La notizia è visibile da chiunque"><img src="https://img.icons8.com/fluency-systems-regular/25/000000/visible.png"/></button>
+        <button *ngIf="n.isVisible === false && n.isDeleted === false" (click)="SetVisible(n.id)" class="visibilebtn" title="La notizia è visibile solo da te"><img src="https://img.icons8.com/fluency-systems-regular/25/000000/hide.png"/></button>
+      </div>   
+      <div *ngIf="n.espandi === true" class="dettaglio">
+        <div class="titolo"><b>{{ n.titolo }}</b></div>
+        <div class="data">{{ n.data | date:'dd-MM-yyyy' }}</div>
+        <div class="contenuto"  [innerHtml]="n.contenuto" ></div>
+      </div>
+    </div>
+
+  </div>
+  
+  <!-- ---- Add Modal ---- -->
+  
+  <div class="modal fade add-news-modal" id="add-news" tabindex="-1" aria-labelledby="add-news" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Aggiungi Notizia</h2>
+          <button type="button" class="btn-close" id="closeModalAdd" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form #addNewsForm="ngForm" class="needs-validation" (ngSubmit)="AddNews(addNewsForm)">
+          <div class="modal-body">
+            <div class="form-group mb-3">
+              <label for="data">Data</label>
+              <input class="form-control has-validation" type="date" required name="data" [(ngModel)]="Data" #datatemp="ngModel">
+              <div *ngIf="datatemp.invalid && datatemp.dirty">
+                <div *ngIf="datatemp.errors.required" class="invalid-feedback">La data è obbligatoria</div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="titolo">Titolo</label>
+              <input class="form-control has-validation" type="text" required maxlength="30" placeholder="Titolo" name="titolo" [(ngModel)]="Titolo" #titolotemp="ngModel">
+              <div *ngIf="titolotemp.invalid && titolotemp.dirty">
+                <div *ngIf="titolotemp.errors.required" class="invalid-feedback">Il titolo è obbligatorio</div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              
+              <label for="date">Contenuto</label>
+
+              <div class="edit-container-form">
+                <div class="tools">
+                  <button type="button" (click)="format('bold')"><img src="https://img.icons8.com/ios-filled/24/000000/bold.png"/></button>
+                  <button type="button" (click)="format('italic')"><img src="https://img.icons8.com/material-rounded/24/000000/italic.png"/></button>
+                  <button type="button" (click)="setUrl()"><img src="https://img.icons8.com/ios/24/000000/attach.png"/></button>
+                  <input id="txtFormatUrl" placeholder="url" class="form-control" name="url" [(ngModel)]='url'>
+                </div>
+                <div class="textarea form-control" id="textarea"></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer ">
+            <div class="d-grid gap-2 col-10 mx-auto">
+                <button type="submit" [disabled]="addNewsForm.form.invalid" class="btn" >Salva</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- ---- Edit Modal ---- -->
+
+  <div class="modal fade edit-news-modal" id="edit-news" tabindex="-1" aria-labelledby="edit-news" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Modifica Notizia</h2>
+          <button type="button" class="btn-close" id="closeModalEdit" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form #editNewsForm="ngForm" class="needs-validation" (ngSubmit)="EditNews(editNewsForm)">
+          <div class="modal-body">
+            <div class="form-group mb-3">
+              <label for="data">Data</label>
+              <input class="form-control has-validation" type="date" required name="data" [(ngModel)]="Data" #datatemp="ngModel">
+              <div *ngIf="datatemp.invalid && datatemp.dirty">
+                <div *ngIf="datatemp.errors.required" class="invalid-feedback">La data è obbligatoria</div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <label for="titolo">Titolo</label>
+              <input class="form-control has-validation" type="text" required maxlength="30" placeholder="Titolo" name="titolo" [(ngModel)]="Titolo" #titolotemp="ngModel">
+              <div *ngIf="titolotemp.invalid && titolotemp.dirty">
+                <div *ngIf="titolotemp.errors.required" class="invalid-feedback">Il titolo è obbligatorio</div>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              
+              <label for="date">Contenuto</label>
+
+              <div class="edit-container-form">
+                <div class="tools">
+                  <button type="button" (click)="format('bold')"><img src="https://img.icons8.com/ios-filled/24/000000/bold.png"/></button>
+                  <button type="button" (click)="format('italic')"><img src="https://img.icons8.com/material-rounded/24/000000/italic.png"/></button>
+                  <button type="button" (click)="setUrl()"><img src="https://img.icons8.com/ios/24/000000/attach.png"/></button>
+                  <input id="txtFormatUrl" placeholder="url" class="form-control" name="url" [(ngModel)]='url'>
+                </div>
+                <div class="textarea form-control" id="textareaEdit"></div>
+              </div>
+
+            </div>
+          </div>
+          <div class="modal-footer ">
+            <div class="d-grid gap-2 col-10 mx-auto">
+              <button type="submit" class="btn btn-primary" id="saveNews" [disabled]="editNewsForm.form.invalid">Salva</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- <div class="edit-container-form">
+    <div class="tools">
+      <button class="salva" (click)="save()">Salva</button>
+      <button (click)="format('bold')"><img src="https://img.icons8.com/ios-filled/24/000000/bold.png"/></button>
+      <button (click)="format('italic')"><img src="https://img.icons8.com/material-rounded/24/000000/italic.png"/></button>
+      <button (click)="setUrl()"><img src="https://img.icons8.com/ios/24/000000/attach.png"/></button>
+      <input id="txtFormatUrl" placeholder="url" class="form-control" [(ngModel)]='url'>
+    </div>
+
+    <div class="textarea" id="textarea"></div>
+
+    <angular-file-uploader [config]="afuConfig"></angular-file-uploader>
+
+    <form>
+      <input type="file" name="inputFile">
+      <button type="submit" (click)="uploadFile()">carica</button>
+  </form>
+
+  <h1>file upload</h1>
+  <input type="file" (change)="onFileSelected($event)">
+  <button type="button" (click)="onUpload()">Upload</button>
+
+  </div> -->
+</div>
+
+<button class="logoutbtn" title="logout" (click)="logOut()">
+  <img src="https://img.icons8.com/windows/32/000000/logout-rounded-left.png"/>
+</button>

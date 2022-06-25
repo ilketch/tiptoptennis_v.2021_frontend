@@ -1,0 +1,60 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Lato', sans-serif;
+}
+
+[class*="col-"]{  
+	width: 100%;
+	float: left;
+	padding: 1px;
+}
+
+.camp-container {
+    width: 100%;
+    padding: 1rem;
+    color: white;
+    overflow: hidden;
+}
+
+.camp-container h4 {
+    margin-bottom: 2rem;
+}
+
+.camp-container p {
+    text-align: justify;
+    margin-bottom: 1rem;
+}
+
+.camp-container a {
+    color: white;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+}
+
+@media (min-width: 769px) {
+    .col-1{width: 8.33%;}
+	.col-2{width: 16.66%;}
+	.col-3{width: 25%;}
+	.col-4{width: 33.33%;}
+	.col-5{width: 41.66%;}
+	.col-6{width: 50%;}
+	.col-7{width: 58.33%;}
+	.col-8{width: 66.66%;}
+	.col-9{width: 75%;}
+	.col-10{width: 83.33%;}
+	.col-11{width: 91.66%;}
+	.col-12{width: 100%;}
+
+    .camp-container {
+        width: 70%;
+        margin: auto;
+        margin-top: 5rem;
+        padding-top: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    
+}

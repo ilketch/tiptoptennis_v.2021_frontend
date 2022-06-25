@@ -1,0 +1,43 @@
+trigger:
+  branches:
+    include:
+    - master
+stages:
+- stage: __default
+  jobs:
+  - job: Job
+    pool:
+      vmImage: windows-2019
+    steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '14.x'
+      displayName: 'Install Node.js'
+    - task: CmdLine@2
+      displayName: 'npm install Angular CLI'
+      inputs:
+        script: |
+          npm install -g @angular/cli
+    - task: CmdLine@2
+      displayName: 'npm install Deps'
+      inputs:
+        script: |
+          npm install
+    - task: CmdLine@2
+      displayName: 'Build project'
+      inputs:
+        script: |
+          ng build --prod
+    - task: PublishBuildArtifacts@1
+      displayName: 'Save artifacts'
+      inputs:
+        PathtoPublish: '$(Build.Repository.LocalPath)/dist/FrontEnd'
+        ArtifactName: 'drop'
+        publishLocation: 'Container'
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Pagamento in base al consumo(a8e8e877-7fb6-48f5-917c-b5e7643df5cc)'
+        appType: 'webApp'
+        WebAppName: 'tiptoptennisfrontend'
+        packageForLinux: '$(Build.Repository.LocalPath)/dist/FrontEnd'

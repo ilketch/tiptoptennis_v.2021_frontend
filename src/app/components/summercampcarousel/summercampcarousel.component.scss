@@ -1,0 +1,39 @@
+.col-4 {
+    width: 33.33%;
+	float: left;
+}
+
+.carousels-desktop {
+    display: none;
+}
+
+.carousel-mobile {
+    display: flex;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+}
+
+@media (min-width: 769px) {
+    .carousels-desktop {
+        display: flex;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .carousel-mobile {
+        display: none;
+    }
+
+    .carousel-item {
+        padding: 3px;
+    }
+
+    img:hover {
+        transition: 1000ms;
+        transform: scale(1.2);
+    }
+
+    img {
+        transition: 1000ms;
+    }
+}

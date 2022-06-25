@@ -1,0 +1,256 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+[class*="col-"]{  
+	width: 100%;
+	float: left;
+	padding: 1px;
+}
+
+@media (min-width: 769px){	
+	.col-1{width: 8.33%;}
+	.col-2{width: 16.66%;}
+	.col-3{width: 25%;}
+	.col-4{width: 33.33%;}
+	.col-5{width: 41.66%;}
+	.col-6{width: 50%;}
+	.col-7{width: 58.33%;}
+	.col-8{width: 66.66%;}
+	.col-9{width: 75%;}
+	.col-10{width: 83.33%;}
+	.col-11{width: 91.66%;}
+	.col-12{width: 100%;}
+}
+
+.scuola-container {
+    width: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-top: 1rem;
+}
+
+@media(min-width: 769px) {
+    .scuola-container {
+        width: 70%;
+        margin: auto;
+        margin-top: 5rem;
+    }
+}
+
+.scuola-container div {
+    margin-bottom: 5rem;
+}
+
+.minitennis-descrizione, .agonistica-descrizione {
+   p {
+       text-align: justify;
+   } 
+}
+
+// ------------ tabella quota iscrizione ------------
+
+.quota-iscrizione {
+    width: 100%;
+    background-color: #dddc00;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+@media(max-width: 768px) {
+    .quota-iscrizione {
+        margin-top: -3rem;
+    }
+}
+
+.quota-iscrizione td {
+    color: #171717;
+    border: 2px solid #171717;
+    padding: 0.6rem;
+}
+
+.quota-iscrizione td p {
+    color: #171717;
+}
+
+
+// ------------ minitennis ------------
+
+.minitennis-descrizione h4 {
+    margin-bottom: 2rem;
+}
+.minitennis-descrizione p {
+    margin-bottom: 1rem;
+}
+
+
+    // ------------ tabella minitennis ------------
+
+    .minitennis {
+        width: 100%;
+        background-color: #b3c3d6;
+        border: 2px solid #171717;
+    }
+
+    .minitennis th {
+        padding: 0.6rem;
+        font-weight: normal;
+        background-color: #9bacbd;
+    }
+
+    .minitennis tbody tr:hover {
+        background-color: #9bacbd;
+    }
+
+    .minitennis td {
+        color: white;
+        padding: 0.2rem;
+        padding-left: 0.6rem;
+    }
+
+    .minitennis th {
+        border-bottom: 2px solid #171717;
+    }
+
+.inomaggio {
+    text-align: center;
+    font-size: smaller;
+    margin-top: 1rem;
+}
+
+
+// ------------ agonistica -------------
+
+.agonistica-descrizione h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+.agonistica-descrizione p {
+    margin-bottom: 1rem;
+}
+
+    // ------------ tabella agonistica ------------
+
+    .agonistica {
+        width: 100%;
+        background-color: #b3c3d6;
+        border: 2px solid #171717;
+    }
+
+    .agonistica th {
+        padding: 0.6rem;
+        font-weight: normal;
+        background-color: #9bacbd;
+    }
+
+    .agonistica tbody tr:hover {
+        background-color: #9bacbd;
+    }
+
+    .agonistica td {
+        color: white;
+        padding: 0.2rem;
+        padding-left: 0.6rem;
+    }
+
+    .agonistica th {
+        border-bottom: 2px solid #171717;
+    }
+
+// ------------ private -------------
+
+.private-descrizione h4 {
+    margin-top: 0.5rem;
+    margin-bottom: 2rem;
+}
+
+    // ------------ tabella private ------------
+
+    .private-container {
+        overflow: auto;
+    }
+
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    .private {
+        width: 100%;
+        background-color: #b3c3d6;
+        border: 2px solid #171717;
+    }
+
+
+    .private th {
+        padding: 0.6rem;
+        font-weight: normal;
+        background-color: #9bacbd;
+    }
+
+    .private tbody tr:hover {
+        background-color: #9bacbd;
+    }
+
+    .private td {
+        color: white;
+        padding: 0.2rem;
+        padding-left: 0.6rem;
+    }
+
+    .private th {
+        border-bottom: 2px solid #171717;
+    }
+
+.sezione-private .inomaggio {
+    margin-top: -4rem;
+}
+
+
+// --- bottoni nascosti per la navigazione nella pagina ---
+.hidden {
+    display: none;
+}
+
+.row {
+    height: 58px;
+}
+
+.iscrizione-container {
+    width: 360px;
+    margin: auto;
+    padding: 0;
+    margin-bottom: 0;
+}
+
+.iscrizione {
+    text-align: center;
+    font-size: 1rem;
+    border: 1px solid #dddc00;
+    padding: 1rem;
+    margin: 0;
+    color: #dddc00;
+    background-color: transparent;
+    width: 100%;
+    text-decoration: none;
+    overflow: visible;
+}
+
+.iscrizione:hover {
+    background-color: RGBA(221, 220, 0, 0.1);
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+}
+
+@media(max-width: 768px) {
+    .iscrizione-container {
+        width: 100%;
+    }
+
+}

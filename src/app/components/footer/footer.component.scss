@@ -1,0 +1,145 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+[class*="col-"]{  
+	width: 100%;
+	float: left;
+	padding: 1px;
+}
+
+.col-m-6{width: 50%;}
+
+@media (min-width: 769px) {
+    .col-s-1{width: 8.33%;}
+	.col-s-2{width: 16.66%;}
+	.col-s-3{width: 25%;}
+	.col-s-4{width: 33.33%;}
+	.col-s-5{width: 41.66%;}
+	.col-s-6{width: 50%;}
+	.col-s-7{width: 58.33%;}
+	.col-s-8{width: 66.66%;}
+	.col-s-9{width: 75%;}
+	.col-s-10{width: 83.33%;}
+	.col-s-11{width: 91.66%;}
+	.col-s-12{width: 100%;}
+}
+
+@media (min-width: 1100px) {
+    .col-1{width: 8.33%;}
+	.col-2{width: 16.66%;}
+	.col-3{width: 25%;}
+	.col-4{width: 33.33%;}
+	.col-5{width: 41.66%;}
+	.col-6{width: 50%;}
+	.col-7{width: 58.33%;}
+	.col-8{width: 66.66%;}
+	.col-9{width: 75%;}
+	.col-10{width: 83.33%;}
+	.col-11{width: 91.66%;}
+	.col-12{width: 100%;}
+}
+
+.footer-container {
+    width: 100%;
+    min-height: 340px;
+    background-image: linear-gradient(to bottom, #171717 0%, white 150%);
+}
+
+
+.footer-container-info, .footer-container-news {
+    height: 306px;
+	padding: 2rem;
+}
+
+@media (min-width: 769px) {
+	.footer-container-info, .footer-container-news {
+		padding: 5rem;
+	}
+}
+
+@media (max-width: 768px) {
+	.footer-container-news {
+		margin-top: -6rem;
+	}
+	.footer-container-info {
+		padding-right: 0;
+	}
+}
+
+
+.footer-container-info h3 {
+    margin-bottom: 0.2rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: gainsboro;
+    text-decoration: underline;
+}
+
+.footer-container-info-social {
+    margin-top: 2rem;
+}
+
+@media (min-width: 769px) {
+	.footer-container-info-social {
+		margin-right: -5rem;
+	}
+}
+
+.footer-container-info-social img {
+    margin-left: 1rem;
+}
+
+.copyright {
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
+    background-color: transparent;
+	padding-bottom: 0.4rem;
+}
+
+.footer-container-news {
+	padding-bottom: 0;
+}
+.ultime-notizie {
+    margin-bottom: 1rem;
+}
+
+.ultima-notizia {
+	border-left: 1px solid #dddc00;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	height: 60%;
+}
+
+.ultima-notizia:hover {
+	cursor: pointer;
+}
+
+.titoloNotizia {
+	height: 20%; 
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	font-weight: bold;
+}
+
+.dataNotizia {
+	height: 20%;
+	font-size: small;
+}
+
+.contenutoNotizia {
+	max-height: 60%;
+	overflow: hidden; 
+	font-size: small;
+}

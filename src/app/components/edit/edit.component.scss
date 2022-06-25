@@ -1,0 +1,233 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.edit-container {
+    background-color: white;
+    color: black;
+    margin: 3rem;
+}
+
+[class*="col-"]{  
+	width: 100%;
+	float: left;
+	padding: 0px;
+}
+
+@media (min-width: 769px) {
+    .col-1{width: 8.33%;}
+	.col-2{width: 16.66%;}
+	.col-3{width: 25%;}
+	.col-4{width: 33.33%;}
+	.col-5{width: 41.66%;}
+	.col-6{width: 50%;}
+	.col-7{width: 58.33%;}
+	.col-8{width: 66.66%;}
+	.col-9{width: 75%;}
+	.col-10{width: 83.33%;}
+	.col-11{width: 91.66%;}
+	.col-12{width: 100%;}
+
+    .desktop{display: inherit;}
+    .mobile{display: none;}
+}
+
+// get all
+
+
+.notizia {
+    height: auto;
+}
+
+.barra-funzioni {
+    width: 100%;
+    display: inline-block;
+    padding: 1rem;
+    background-color: #ccc;
+}
+
+.barra-funzioni button {
+    border: none;
+    background-color: transparent;
+}
+
+.barra-funzioni .espandi-riduci-btn, .barra-funzioni .data, .barra-funzioni .titolo {
+    float: left;
+}
+
+.barra-funzioni .data, .barra-funzioni .titolo {
+    margin-left: 1rem;
+}
+
+.barra-funzioni .titolo {
+    font-weight: bold;
+}
+
+.modificabtn, .eliminabtn, .ripristinabtn, .visibilebtn {
+    float: right;
+}
+
+.modificabtn, .eliminabtn, .ripristinabtn {
+    margin-left: 1rem;
+}
+
+.dettaglio {
+    padding: 1rem;
+}
+
+.dettaglio .titolo, .dettaglio .data {
+    margin-bottom: 1rem;
+}
+
+.dettaglio .data {
+    font-weight: lighter;
+}
+
+// get all filtro
+
+.barra-filtri {
+    float: left;
+    width: 100%;
+    padding: 1rem;
+    background-color: white;
+}
+
+.filtro-scelta {
+    display: inline;
+    height: 44px;
+    padding-right: 1rem;
+}
+
+.filtro-scelta select {
+    height: 100%;
+    width: 100%;
+    padding-left: 0.5rem;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+option:hover {
+    background-color: #ccc; //non funza
+}
+
+.filtro-ricerca {
+    display: inline;
+    border: 1px solid #ccc;
+}
+
+.filtro-ricerca img {
+    padding-left: 0.7rem;
+    margin-top: -0.2rem;
+    max-width: 5%;
+}
+
+.filtro-ricerca input {
+    padding: 0.57rem;
+    border: none;
+    outline: none;
+    width: 95%;
+}
+
+.aggiungi {
+    height: 40px;
+}
+
+.aggiungibtn {
+    background-color: transparent;
+    font-size: 32px;
+    height: 44px;
+    width: 44px;
+    margin-left: 40%;
+    border: 1px solid #ccc;
+    border-radius: 22px;
+    background-color: #ccc;
+    color: #555;
+}
+
+.aggiungibtn:hover {
+    border: 1px solid #ccc;
+    background-color: #ddd;
+    color: #666;
+    transform: none;
+}
+
+.aggiungibtn img {
+    margin-top: -14px;
+}
+
+// add
+
+.modal {
+    margin: auto;
+}
+
+.add-news-modal {
+    // width: 80%;
+}
+
+.modal-content {
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.btn-close {
+    margin-right: 1rem;
+}
+
+.modal-body {
+    margin-top: 2rem;
+}
+
+.mb-3 input{
+    padding: 0.3rem;
+    border-radius: 6px;
+}
+
+.edit-container-form {
+    margin: 0;
+    padding: 0;
+}
+
+.tools {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.tools input {
+    width: auto;
+}
+
+.textarea {
+    height: 300px;
+    padding: 1rem;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+.modal-footer {
+    border: none;
+}
+
+.btn {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    background-color: #555;
+    color: white;
+    height: 30px;
+    border-radius: 15px;
+}
+
+.btn:hover {
+    background-color: #666;
+    cursor: pointer;
+}
+
+.logoutbtn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background-color: none;
+    border-radius: 50%;
+}

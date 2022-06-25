@@ -1,0 +1,26 @@
+<div class="navbar-container">
+  <nav>
+    <div class="logo" (click)="setPage('home')"><span class="bianco">TIPTOP</span><span class="giallo">TENNIS</span></div>
+    <label for="btn" class="icon">
+      <img src="https://img.icons8.com/material-outlined/32/FFFFFF/menu--v1.png"/>
+    </label>
+    <input type="checkbox" id="btn">
+    <ul>
+      <li><a (click)="setPage('home')">Home</a></li>
+        <li><a (click)="setPage('chisiamo')">Chi siamo</a></li>
+        <li><a (click)="setPage('lesedi')">Le sedi</a></li>
+        <li>
+          <label for="btn-1" class="show">La scuola <img src="https://img.icons8.com/ios/16/dddc00/expand-arrow--v2.png"/></label>
+          <a (click)="goTo('')">La scuola</a>
+          <input type="checkbox" id="btn-1">
+          <ul>
+            <li><a (click)="goTo('minitennis')">Minitennis</a></li>
+            <li><a (click)="goTo('agonistica')">Sezione agonistica</a></li>
+            <li><a (click)="goTo('private')">Lezioni private</a></li>
+          </ul>
+        </li>
+        <li><a (click)="setPage('summercamp')">Summer camp</a></li>
+        <li><a (click)="setPage('news')">News</a></li>
+    </ul>
+  </nav>
+</div>
