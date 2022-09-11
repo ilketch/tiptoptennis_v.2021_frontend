@@ -14,7 +14,12 @@ export class AuthService {
   @Input()
   isLogged: boolean;
   
-  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) { }
+  constructor(private http: HttpClient, private router: Router, private jwtHelper: JwtHelperService) { 
+    if (this.tokenGetter() == '')
+      this.isLogged = false;
+    else 
+      this.isLogged = true;
+  }
 
   tokenGetter(){
     return localStorage.getItem('token');
@@ -32,6 +37,7 @@ export class AuthService {
       localStorage.setItem('token', token);
       this.router.navigate(['edit']);
     }, err => {
+      alert("Login fallito")
     });
   }
 

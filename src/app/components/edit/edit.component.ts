@@ -1,6 +1,7 @@
 import { HttpClient  } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormBuilder, FormGroup, FormControl, Validators, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Notizia } from 'src/app/models/notizia.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { NotiziaService } from 'src/app/services/notizia.service';
@@ -38,7 +39,7 @@ export class EditComponent implements OnInit {
     }
   };
 
-  constructor(private notiziaService: NotiziaService, private authService: AuthService, private appComponent: AppComponent) {
+  constructor(private notiziaService: NotiziaService, private authService: AuthService, private appComponent: AppComponent, private router: Router,) {
     
   }
  
@@ -122,6 +123,12 @@ export class EditComponent implements OnInit {
     };
     this.notiziaService.Add(this.notizia).subscribe(p => {
       this.aggiorna();
+    }, err => {
+      if(err.status==401)
+      {
+        alert('Autenticazione scaduta, rifai il Login!')
+        this.router.navigate(['login'])
+      }
     });
     this.SvuotaForm(form);
     let button = document.getElementById('closeModalAdd');
@@ -140,6 +147,12 @@ export class EditComponent implements OnInit {
       this.IsVisible = data.isVisible;
       this.IsDeleted = data.isDeleted;
       this.Id = data.id;
+    }, err => {
+      if(err.status==401)
+      {
+        alert('Autenticazione scaduta, rifai il Login!')
+        this.router.navigate(['login'])
+      }
     });
   }
 
@@ -155,6 +168,12 @@ export class EditComponent implements OnInit {
     };
     this.notiziaService.Update(this.notizia).subscribe(p => {
       this.aggiorna();
+    }, err => {
+      if(err.status==401)
+      {
+        alert('Autenticazione scaduta, rifai il Login!')
+        this.router.navigate(['login'])
+      }
     });
     let button = document.getElementById('closeModalEdit');
     button.click();
@@ -167,6 +186,12 @@ export class EditComponent implements OnInit {
     if (domanda === true) {
       this.notiziaService.Delete(id).subscribe(p => {
         this.aggiorna();
+      }, err => {
+        if(err.status==401)
+        {
+          alert('Autenticazione scaduta, rifai il Login!')
+          this.router.navigate(['login'])
+        }
       });
     }
   }
@@ -176,6 +201,12 @@ export class EditComponent implements OnInit {
     if (domanda === true) {
       this.notiziaService.PutIntoRecycleBin(id).subscribe(p => {
         this.aggiorna();
+      }, err => {
+        if(err.status==401)
+        {
+          alert('Autenticazione scaduta, rifai il Login!')
+          this.router.navigate(['login'])
+        }
       });
     }
   }
@@ -183,18 +214,36 @@ export class EditComponent implements OnInit {
   RemoveFromRecycleBin(id: number) {
     this.notiziaService.RemoveFromRecycleBin(id).subscribe(p => {
       this.aggiorna();
+    }, err => {
+      if(err.status==401)
+      {
+        alert('Autenticazione scaduta, rifai il Login!')
+        this.router.navigate(['login'])
+      }
     });
   }
 
   SetInvisible(id: number) {
     this.notiziaService.SetInvisible(id).subscribe(p => {
       this.aggiorna();
+    }, err => {
+      if(err.status==401)
+      {
+        alert('Autenticazione scaduta, rifai il Login!')
+        this.router.navigate(['login'])
+      }
     });
   }
 
   SetVisible(id: number) {
     this.notiziaService.SetVisible(id).subscribe(p => {
       this.aggiorna();
+    }, err => {
+      if(err.status==401)
+      {
+        alert('Autenticazione scaduta, rifai il Login!')
+        this.router.navigate(['login'])
+      }
     });
   }
 

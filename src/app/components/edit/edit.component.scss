@@ -7,7 +7,10 @@
 .edit-container {
     background-color: white;
     color: black;
-    margin: 3rem;
+    top: 3rem;
+    left: 3rem;
+    right: 3rem;
+    position: absolute;
 }
 
 [class*="col-"]{  
