@@ -39,4 +39,9 @@ export class LascuolaComponent implements OnInit {
     aMag.click();
   }
 
+  brochure() {
+    let aMag = document.getElementById('brochure');
+    aMag.click();
+  }
+
 }
