@@ -17,6 +17,23 @@
     color: white;
     margin-bottom: 5rem;
     padding: 1rem;
+
+    p {
+        text-align: justify;
+        margin-bottom: 1rem;
+        
+        a {
+            text-decoration: underline;
+        }
+
+        a:hover {
+            color: gainsboro;
+        }
+    }
+
+    ul {
+        padding-left: 2rem;
+    }
 }
 
 .lesedi-container h4 {
